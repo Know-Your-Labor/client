@@ -17,7 +17,7 @@ import {
     Github,
     Wifi,
     WifiNone,
-    MapLocation
+    StatusGood
 } from 'grommet-icons';
 
 /*
@@ -29,10 +29,10 @@ light yellow: fff3b0
 const theme = {
     global: {
         colors: {
-            brand: '#e09f3e',
+            brand: '#335c67',
             background: '#fff3b0',
             placeholder: '#000000',
-            items: '#335c67',
+            items: '#e09f3e',
             tag: '#540b0e'
         },
         font: {
@@ -114,6 +114,9 @@ function ListPage() {
                         </Box>:<></>}
                         {obj["slave"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
                             <Text>Forced Labor</Text>
+                        </Box>:<></>}
+                        {!obj["strike"] && !obj["child"] && !obj["slave"]?<Box round='large' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                            <StatusGood />
                         </Box>:<></>}
                     </Box>
                 })}
