@@ -32,7 +32,8 @@ const theme = {
             brand: '#e09f3e',
             background: '#fff3b0',
             placeholder: '#000000',
-            items: '#335c67'
+            items: '#335c67',
+            tag: '#540b0e'
         },
         font: {
             size: '18px',
@@ -81,20 +82,39 @@ function ListPage() {
 
         var products = [
             {
-                "name": "Product 1"
+                "name": "Sprite",
+                "strike": true,
+                "child": true,
+                "slave": false
             }, {
-                "name": "Product 2"
+                "name": "7-Up",
+                "strike": false,
+                "child": true,
+                "slave": true
+            }, {
+                "name": "Jarritos",
+                "strike": false,
+                "child": false,
+                "slave": false
             }
         ]
 
         return (
             <Box>
                 {products.map( (obj, i) => {
-                    return <Box round='large' background='items' margin={{horizontal: "medium", vertical: "medium"}} pad={{horizontal: "medium", vertical: "medium"}}>
-                        <Text>{obj["name"]}</Text>
-                        {/* <Tag name="name" value="value" />
-                        <Tag name="name" value="value" />
-                        <Tag name="name" value="value" /> */}
+                    return <Box direction='row' round='medium' background='items' margin={{horizontal: "medium", vertical: "medium"}} pad={{horizontal: "medium", vertical: "medium"}}>
+                        <Box pad={{horizontal: "medium", vertical: "small"}}>
+                            <Text>{obj["name"]}</Text>
+                        </Box>
+                        {obj["strike"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                            <Text>Active Strike</Text>
+                        </Box>:<></>}
+                        {obj["child"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                            <Text>Child Labor</Text>
+                        </Box>:<></>}
+                        {obj["slave"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                            <Text>Forced Labor</Text>
+                        </Box>:<></>}
                     </Box>
                 })}
             </Box>
