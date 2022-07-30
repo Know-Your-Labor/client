@@ -19,18 +19,23 @@ import {
     MapLocation
 } from 'grommet-icons';
 
+/*
+dark red: 540b0e
+light red: 9e2a2b
+dark yellow: e09f3e
+light yellow: fff3b0
+*/
 const theme = {
     global: {
         colors: {
-        brand: '#809bce',
-        background: '#b8e0d2',
-        placeholder: '#000000',
-        disconnect: '#eb4034',
-        connect: '#37eb34',
+            brand: '#9e2a2b',
+            background: '#e09f3e',
+            placeholder: '#000000',
+            disconnect: '#fff3b0',
         },
         font: {
-        size: '18px',
-        height: '20px',
+            size: '18px',
+            height: '20px',
         },
     },
 };
