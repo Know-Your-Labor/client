@@ -9,7 +9,8 @@ import {
     Text,
     BoxExtendedProps,
     Nav,
-    Layer
+    Layer,
+    Tag
 } from 'grommet';
 import {
     Notes,
@@ -28,10 +29,10 @@ light yellow: fff3b0
 const theme = {
     global: {
         colors: {
-            brand: '#9e2a2b',
+            brand: '#e09f3e',
             background: '#fff3b0',
             placeholder: '#000000',
-            disconnect: '#fff3b0',
+            items: '#335c67'
         },
         font: {
             size: '18px',
@@ -89,8 +90,11 @@ function ListPage() {
         return (
             <Box>
                 {products.map( (obj, i) => {
-                    return <Box pad={{horizontal: "medium", vertical: "large"}}>
+                    return <Box round='large' background='items' margin={{horizontal: "medium", vertical: "medium"}} pad={{horizontal: "medium", vertical: "medium"}}>
                         <Text>{obj["name"]}</Text>
+                        {/* <Tag name="name" value="value" />
+                        <Tag name="name" value="value" />
+                        <Tag name="name" value="value" /> */}
                     </Box>
                 })}
             </Box>
@@ -107,11 +111,11 @@ function ListPage() {
                     </Nav>
                 </AppBar>
 
-                <Box pad={{horizontal: "medium", vertical: "large"}}>
+                <Box pad={{horizontal: "medium", top: "large"}}>
                     {InputBox()}
                 </Box>
 
-                <Box pad={{horizontal: "medium", vertical: "large"}}>
+                <Box pad={{horizontal: "medium", vertical: "medium"}}>
                     {ProductList()}
                 </Box>
             </Layer>
