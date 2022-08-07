@@ -135,7 +135,7 @@ function ListPage() {
                             <Text>{obj["total_controversies"]} issues total</Text>
                         </Box>:<></>}
                         {!obj["strike_controversies"] && !obj["environmental_controversies"] && !obj["child_labor_controversies"] && !obj["slavey_controversies"] && !obj["total_controversies"]?<Box alignSelf='center' round='large' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
-                            <StatusGood />
+                            <StatusGood color='green'/>
                         </Box>:<></>}
                     </Box>
                 })}
