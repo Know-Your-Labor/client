@@ -94,7 +94,7 @@ function ListPage() {
             (error) => {
                 setError(error);
             }
-        )
+        );
     }, []);
 
     const InputBox = () => {
