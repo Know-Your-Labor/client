@@ -59,11 +59,40 @@ const AppBar = (props: JSX.IntrinsicAttributes & BoxExtendedProps & { children?:
 function ListPage() {
 
     const [input, setInput] = useState<string>();
+    const [searchFilter, setSearchFilter] = useState<string>();
+    const [products, setProducts] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/list?page=0&filter=" + searchFilter)
+          .then(res => res.json())
+          .then(
+            (result) => {
+                setProducts(result);
+            },
+            (error) => {
+                setError(error);
+            }
+        )
+    }, [searchFilter]);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/list?page=0&filter=")
+          .then(res => res.json())
+          .then(
+            (result) => {
+                setProducts(result);
+            },
+            (error) => {
+                setError(error);
+            }
+        )
+    }, []);
 
     const InputBox = () => {
         const handleKeyDown = (event: { key: string; }) => {
           if (event.key === 'Enter') {
-            // TODO: apply filter
+            setSearchFilter(input);
           }
         }
       
@@ -72,32 +101,16 @@ function ListPage() {
             key="input"
             placeholder="Search for a product"
             value={input}
-            onChange={event => setInput(event.target.value)}
+            onChange={event => {
+                setInput(event.target.value);
+                setSearchFilter(input);
+            }}
             onKeyDown={handleKeyDown}
           />
         );
     }
 
     const ProductList = () => {
-
-        var products = [
-            {
-                "name": "Sprite",
-                "strike": true,
-                "child": true,
-                "slave": false
-            }, {
-                "name": "7-Up",
-                "strike": false,
-                "child": true,
-                "slave": true
-            }, {
-                "name": "Jarritos",
-                "strike": false,
-                "child": false,
-                "slave": false
-            }
-        ]
 
         return (
             <Box>
