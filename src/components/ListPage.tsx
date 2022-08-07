@@ -1,5 +1,6 @@
 import { useEffect, useRef, ReactNode } from "react";
 import useState from 'react-usestateref';
+import { useNavigate } from "react-router-dom";
 import {
     Box,
     Button,
@@ -10,14 +11,11 @@ import {
     BoxExtendedProps,
     Nav,
     Layer,
-    Tag
 } from 'grommet';
 import {
-    Notes,
     Github,
-    Wifi,
-    WifiNone,
-    StatusGood
+    StatusGood,
+    CircleInformation
 } from 'grommet-icons';
 
 /*
@@ -33,12 +31,22 @@ const theme = {
             background: '#fff3b0',
             placeholder: '#000000',
             items: '#e09f3e',
-            tag: '#540b0e'
+            tag: '#540b0e',
         },
         font: {
             size: '18px',
             height: '20px',
         },
+        hover: {
+            background: {
+                color: 'tag'
+            },
+        },
+        focus: {
+            border: {
+                color: 'brand'
+            }
+        }
     },
 };
 
@@ -115,7 +123,7 @@ function ListPage() {
         return (
             <Box overflow='scroll'>
                 {products.map( (obj, i) => {
-                    return <Box direction='row' round='medium' background='items' margin={{horizontal: "medium", vertical: "medium"}} pad={{horizontal: "medium", vertical: "large"}}>
+                    return <Box onClick={event =>  window.location.href='/product/'+obj['id']} focusIndicator={true} hoverIndicator={true} direction='row' round='medium' background='items' margin={{horizontal: "medium", vertical: "medium"}} pad={{horizontal: "medium", vertical: "large"}}>
                         <Box pad={{horizontal: "medium"}} alignSelf='center'>
                             <Text>{obj["name"]}</Text>
                         </Box>
