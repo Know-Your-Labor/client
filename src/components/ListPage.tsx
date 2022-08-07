@@ -119,16 +119,22 @@ function ListPage() {
                         <Box pad={{horizontal: "medium", vertical: "small"}}>
                             <Text>{obj["name"]}</Text>
                         </Box>
-                        {obj["strike"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
-                            <Text>Active Strike</Text>
+                        {obj["strike_controversies"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                            <Text>Worker Issues</Text>
                         </Box>:<></>}
-                        {obj["child"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                        {obj["child_labor_controversies"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
                             <Text>Child Labor</Text>
                         </Box>:<></>}
-                        {obj["slave"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                        {obj["slavey_controversies"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
                             <Text>Forced Labor</Text>
                         </Box>:<></>}
-                        {!obj["strike"] && !obj["child"] && !obj["slave"]?<Box round='large' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                        {obj["environmental_controversies"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                            <Text>Environmental Issues</Text>
+                        </Box>:<></>}
+                        {obj["total_controversies"]?<Box round='large' background='tag' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
+                            <Text>{obj["total_controversies"]} issues total</Text>
+                        </Box>:<></>}
+                        {!obj["strike_controversies"] && !obj["environmental_controversies"] && !obj["child_labor_controversies"] && !obj["slavey_controversies"] && !obj["total_controversies"]?<Box round='large' margin={{horizontal: "medium"}} pad={{horizontal: "medium", vertical: "small"}}>
                             <StatusGood />
                         </Box>:<></>}
                     </Box>
